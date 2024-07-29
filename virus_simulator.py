@@ -1,5 +1,5 @@
 # Insures number of infected is an integer between 0-200
-def validate_num_infected(min_amount, max_amount):
+def validate_num_infected(min_amount):
       """Purpose: Validates the input of the number of infected
       Passed: An integer indicating the max number of infected
       Returns: A positive integer between 0 and 200"""
@@ -7,12 +7,12 @@ def validate_num_infected(min_amount, max_amount):
       while True:
             try:
                   input_data = int(input())
-                  if input_data >= min_amount and input_data <= max_amount:
+                  if input_data >= min_amount and input_data <= max_num_infected:
                         return input_data
                   else:
-                        print("The number of infected mus be between", min_amount,  "and", max_amount, ":")
+                        print("The number of infected mus be between", min_amount,  "and", max_num_infected, ":")
             except:
-                  print("The number of infected must be a whole number between", min_amount,  "and", max_amount, ":")
+                  print("The number of infected must be a whole number between", min_amount,  "and", max_num_infected, ":")
 
 
 # Data Creation: Prompt users to create and give the number of infected for 3 countries
@@ -22,7 +22,6 @@ def create_country(countries, infected):
       Returns: Nothing"""
 
       MIN_AMOUNT = 50
-      MAX_AMOUNT = 200
 
       while len(countries) != 3:
             print("Please enter the name of your country:")
@@ -34,8 +33,8 @@ def create_country(countries, infected):
 
             countries.append(country_name)
             print("Please enter the number of infected in this country. "
-                  "The number of infected must be between", MIN_AMOUNT, "and", MAX_AMOUNT, ":")
-            num_infected = validate_num_infected(MIN_AMOUNT, MAX_AMOUNT)
+                  "The number of infected must be between", MIN_AMOUNT, "and", max_num_infected, ":")
+            num_infected = validate_num_infected(MIN_AMOUNT)
             infected.append(num_infected)
 
 
@@ -127,7 +126,7 @@ def final_stats(countries, infected, num_countries):
         Returs: Nothing"""
 
       for i in range(num_countries):
-            if infected[i] > 200:
+            if infected[i] > max_num_infected:
                   print(countries[i], "has", infected[i], "citizens and has gon into lockdown.")
             else:
                   print(countries[i], "has", infected[i], "citizens and has successfully stayed out of lockdown.")
@@ -135,20 +134,21 @@ def final_stats(countries, infected, num_countries):
 
 countries = []
 infected = []
+max_num_infected = 200
 
 print()
 print("You have been selected to participate in a virus simulation which will happen over five days.")
 print("Your goal is to control the spread of infection and prevent three countries from going into lockdown.")
 print("You will receive more information later, but first you need to create your countries and state how many ")
-print("infected citizens are in each. the number or infected must be between 50 and 200.")
+print("infected citizens are in each. the number or infected must be between 50 and", max_num_infected, ".")
 create_country(countries, infected)
 print()
 
 print("Now you have to control the spread of infection.")
 print("At the start of each day you will choose one country to help. The number of infected in this country ")
 print("will decrease by 30 while the others increase by 20.")
-print("Once five days have past, any country with more then 200 infected will be put in lock down, deeming ")
-print("you unsuccessful.")
+print("Once five days have past, any country with more then", max_num_infected, "infected will be put in lock down, ")
+print("deeming you unsuccessful.")
 print()
 
 num_countries = len(countries)
