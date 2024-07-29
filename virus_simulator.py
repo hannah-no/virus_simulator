@@ -5,8 +5,10 @@ def validate_num_infected(min_amount):
       Returns: A positive integer between 0 and 200"""
 
       while True:
+            # noinspection PyBroadException
             try:
                   input_data = int(input())
+                  # noinspection PyChainedComparisons
                   if input_data >= min_amount and input_data <= max_num_infected:
                         return input_data
                   else:
@@ -16,7 +18,7 @@ def validate_num_infected(min_amount):
 
 
 # Data Creation: Prompt users to create and give the number of infected for 3 countries
-def create_country(countries, infected):
+def create_country():
       """Purpose: Prompts user to input countries and number of infected to be stored
       Passed: countries and infected
       Returns: Nothing"""
@@ -45,6 +47,7 @@ def validate_country():
       Returns: A valid country"""
 
       while True:
+            # noinspection PyBroadException
             try:
                   chosen_country = input()
                   if chosen_country == countries[0]:
@@ -74,7 +77,7 @@ def validate_decrease_infected(num_infected):
 
 
 # Modifying/Adjusting data: Prompts user to select on country to help
-def increase_decrease_infected(countries, infected, num_countries):
+def increase_decrease_infected():
       """Purpose: Prompt user to select one country to help by decreasing amount of infected by 30 whole
       others increase by 20
       Passed: countries, infected and number of countries
@@ -115,15 +118,15 @@ def five_days():
       Returns: Nothing"""
       for i in range(1, 6, 1):
             print("Day", i)
-            increase_decrease_infected(countries, infected, num_countries)
+            increase_decrease_infected()
             print()
 
 
-# Gives the final ammount of infected for each country and whether or not they've gone into lockdown
-def final_stats(countries, infected, num_countries):
+# Gives the final amount of infected for each country and whether or not they've gone into lockdown
+def final_stats():
       """Purpose: Give each country's final amount of infect and lockdown status
         Passed: countries, infected, and number of countries
-        Returs: Nothing"""
+        Returns: Nothing"""
 
       for i in range(num_countries):
             if infected[i] > max_num_infected:
@@ -141,7 +144,7 @@ print("You have been selected to participate in a virus simulation which will ha
 print("Your goal is to control the spread of infection and prevent three countries from going into lockdown.")
 print("You will receive more information later, but first you need to create your countries and state how many ")
 print("infected citizens are in each. the number or infected must be between 50 and", max_num_infected, ".")
-create_country(countries, infected)
+create_country()
 print()
 
 print("Now you have to control the spread of infection.")
@@ -153,4 +156,4 @@ print()
 
 num_countries = len(countries)
 five_days()
-final_stats(countries, infected, num_countries)
+final_stats()
