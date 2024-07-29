@@ -64,6 +64,16 @@ def validate_country():
                   print("That is not one of your countries. Please check your spelling and try again:")
 
 
+# Checks that the number of infected has not decreased to below zero and replaces it with zero if it has
+def validate_decrease_infected(num_infected):
+      """Purpose: Ensures that the number of infected id=s decreased sensibly
+      Passed: infected
+      Returns: Nothing"""
+      if infected[num_infected] < 0:
+            infected.pop(num_infected)
+            infected.insert(num_infected, int(0))
+
+
 # Modifying/Adjusting data: Prompts user to select on country to help
 def increase_decrease_infected(countries, infected, num_countries):
       """Purpose: Prompt user to select one country to help by decreasing amount of infected by 30 whole
@@ -84,16 +94,19 @@ def increase_decrease_infected(countries, infected, num_countries):
             infected[0] -= DECREASE_INFECTED
             infected[1] += INCREASE_INFECTED
             infected[2] += INCREASE_INFECTED
+            validate_decrease_infected(0)
 
       elif help_country == countries[1]:
             infected[1] -= DECREASE_INFECTED
             infected[0] += INCREASE_INFECTED
             infected[2] += INCREASE_INFECTED
+            validate_decrease_infected(1)
 
       elif help_country == countries[2]:
             infected[2] -= DECREASE_INFECTED
             infected[0] += INCREASE_INFECTED
             infected[1] += INCREASE_INFECTED
+            validate_decrease_infected(2)
 
 
 # Repeats the program 5 times for five days
@@ -137,7 +150,7 @@ print("will decrease by 30 while the others increase by 20.")
 print("Once five days have past, any country with more then 200 infected will be put in lock down, deeming ")
 print("you unsuccessful.")
 print()
-print()
+
 num_countries = len(countries)
 five_days()
 final_stats(countries, infected, num_countries)
