@@ -136,8 +136,8 @@ countries = []
 infected = []
 max_num_infected = 200
 
-create_country(countries, infected)
+create_country()
 print()
 num_countries = len(countries)
 five_days()
-final_stats(countries, infected, num_countries)
+final_stats()
