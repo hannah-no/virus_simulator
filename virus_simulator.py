@@ -127,7 +127,7 @@ def final_stats():
 
     for i in range(num_countries):
         if infected[i] > max_num_infected:
-            print(countries[i], "has", infected[i], "citizens and has gon into lockdown.")
+            print(countries[i], "has", infected[i], "citizens and has gone into lockdown.")
         else:
             print(countries[i], "has", infected[i], "citizens and has successfully stayed out of lockdown.")
 
@@ -147,8 +147,8 @@ print()
 print("Now you have to control the spread of infection.")
 print("At the start of each day you will choose one country to help. The number of infected in this country ")
 print("will decrease by 30 while the others increase by 20.")
-print("Once five days have past, any country with more than", max_num_infected, "infected will be put in lock down, ")
-print("deeming you unsuccessful.")
+print("Once five days have passed, any country with more than", max_num_infected, "infected will be put in lock down,")
+print(" deeming you unsuccessful.")
 print()
 
 num_countries = len(countries)
