@@ -1,3 +1,5 @@
+# Last Updated: 01.08.2024
+
 # Insures number of infected is an integer between 0-200
 def validate_num_infected(min_amount):
     """Purpose: Validates the input of the number of infected
@@ -7,8 +9,9 @@ def validate_num_infected(min_amount):
     while True:
         try:
             input_data = int(input())
-            if input_data >= min_amount and input_data <= max_num_infected:
+            if min_amount <= input_data <= max_num_infected:
                 return input_data
+
             else:
                 print("The number of infected must be between", min_amount,  "and", max_num_infected, ":")
         except:
@@ -55,6 +58,9 @@ def validate_country():
 
             elif chosen_country == countries[2]:
                 return chosen_country
+
+            elif len(chosen_country) == 0:
+                print("You have not typed anything please try again.")
 
             else:
                 print("That is not one of your countries. Please check your spelling and try again:")
