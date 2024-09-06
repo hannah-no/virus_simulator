@@ -1,4 +1,5 @@
 # Last Updated: 01.08.2024
+import time
 
 # Insures number of infected is an integer between 0-200
 def validate_num_infected(min_amount):
@@ -7,6 +8,7 @@ def validate_num_infected(min_amount):
     Returns: A positive integer between 0 and 200"""
 
     while True:
+        # noinspection PyBroadException
         try:
             input_data = int(input())
             if min_amount <= input_data <= max_num_infected:
@@ -48,6 +50,7 @@ def validate_country():
     Returns: A valid country"""
 
     while True:
+        # noinspection PyBroadException
         try:
             chosen_country = input()
             if chosen_country == countries[0]:
@@ -91,6 +94,7 @@ def increase_decrease_infected():
 
     for i in range(num_countries):
         print(countries[i], "has", infected[i], "infected citizens")
+        time.sleep(0.5)
 
     print()
     print("Please select one country to help:")
@@ -120,6 +124,7 @@ def five_days():
     Passes: Nothing
     Returns: Nothing"""
     for i in range(1, 6, 1):
+        time.sleep(1)
         print("Day", i)
         increase_decrease_infected()
         print()
@@ -134,29 +139,36 @@ def final_stats():
     for i in range(num_countries):
         if infected[i] > max_num_infected:
             print(countries[i], "has", infected[i], "citizens and has gone into lockdown.")
+            time.sleep(0.5)
         else:
             print(countries[i], "has", infected[i], "citizens and has successfully stayed out of lockdown.")
+            time.sleep(0.5)
 
 
 countries = []
 infected = []
 max_num_infected = 200
 
-print()
 print("You have been selected to participate in a virus simulation which will happen over five days.")
+time.sleep(1.5)
 print("Your goal is to control the spread of infection and prevent three countries from going into lockdown.")
+time.sleep(1.5)
 print("You will receive more information later, but first you need to create your countries and state how many ")
 print("infected citizens are in each. the number or infected must be between 50 and", max_num_infected, ".")
+time.sleep(1.5)
 create_country()
 print()
 
 print("Now you have to control the spread of infection.")
+time.sleep(1.5)
 print("At the start of each day you will choose one country to help. The number of infected in this country ")
 print("will decrease by 30 while the others increase by 20.")
+time.sleep(1.5)
 print("Once five days have passed, any country with more than", max_num_infected, "infected will be put in lock down,")
-print(" deeming you unsuccessful.")
+print("deeming you unsuccessful.")
 print()
 
 num_countries = len(countries)
 five_days()
+time.sleep(1.5)
 final_stats()
